@@ -19,7 +19,7 @@ return [
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => false,
+    'app_trace'              => true,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -136,6 +136,11 @@ return [
         'taglib_begin' => '{',
         // 标签库标签结束标记
         'taglib_end'   => '}',
+        //模板渲染
+        'layout_on'     =>  true,
+//        'layout_name'   => 'layout',
+        'layout_name'   =>  'Layout/layout',
+        'tmpl_layout_item' => '{__CONTENT__}',
     ],
 
     // 视图输出字符串内容替换
@@ -235,5 +240,12 @@ return [
         'type'      => 'bootstrap',
         'var_page'  => 'page',
         'list_rows' => 15,
+    ],
+
+    //模板输出
+    'parse_str'   => [
+//        '__PUBLIC__' => '/public/',
+//        '/' => '/',
+
     ],
 ];
