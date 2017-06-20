@@ -8,8 +8,10 @@
 
 namespace app\index\model;
 
+use think\Model;
 
-class AdminNav
+
+class AdminNav extends Model
 {
 
 }

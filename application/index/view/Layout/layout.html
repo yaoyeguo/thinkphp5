@@ -18,6 +18,9 @@
     <!-- Google Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="__CSS__/assets/js/Lightweight-Chart/cssCharts.css">
+
+    <!--底部js引用-->
+    {include file="Layout/footer" /}
 </head>
 
 <body>
@@ -29,12 +32,42 @@
     {include file="Layout/left" /}
 
     <!--内容-->
-    <div id="page-wrapper" style="margin:10px;">
+    <div id="page-wrapper">
         {__CONTENT__}
     </div>
 </div>
 
-<!--底部js引用-->
-{include file="Layout/footer" /}
+
 </body>
 </html>
+<script>
+    //菜单高亮切换
+    $('.waves-dark').on('click',function(e){
+        $("#main-menu").find("a").removeClass("active-menu");
+        $(this).addClass('active-menu');
+    });
+
+    //退出登录
+    var requestUrl = 'http://localhost/demoCms/public/';
+    $('#login-out').on('click', function(){
+        layer.confirm('确认要退出登录？', {
+            btn: ['确定','取消'] //按钮
+        }, function(){
+            $.ajax({
+                url: requestUrl + "index/login/loginOut",
+                data:{},
+                type:"Post",
+                dataType:"json",
+                success:function(data){
+                    layer.msg(data.msg,{icon: 1});
+                    window.location.href = requestUrl + "index/index";
+                },
+                error:function(data){
+                    layer.msg(data.msg,{icon: 1});
+                }
+            });
+        }, function(){
+            layer.closeAll('dialog');
+        });
+    });
+</script>

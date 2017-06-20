@@ -4,7 +4,7 @@ namespace app\index\controller;
 use think\Controller;
 use think\Session;
 use think\Request;
-use app\index\model\Account;
+use app\index\model\Users;
 use think\Log;
 
 class Login extends Controller
@@ -28,13 +28,13 @@ class Login extends Controller
             return json(array('errorCode' => 1,'msg' => '请求类型异常'));
         }
 
-        $accountInfo = Account::get([
+        $userInfo = Users::get([
             'name' => $username,
             'passwd' => md5($passwd),
         ]);
 
-        if($accountInfo){
-            Session::set('accountInfo', $accountInfo);
+        if($userInfo){
+            Session::set('userInfo', $userInfo);
             return json(array('errorCode' => 0,'msg' => '登录成功'));
         } else {
             return json(array('errorCode' => 1,'msg' => '验证失败'));
@@ -43,6 +43,11 @@ class Login extends Controller
 
     public function checkRegister(){
 
+    }
+
+    public function loginOut(){
+        Session::delete('userInfo');
+        return json(array('errorCode' => 0,'msg' => '注销成功'));
     }
 
 

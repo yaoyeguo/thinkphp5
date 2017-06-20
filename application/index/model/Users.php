@@ -9,7 +9,7 @@ namespace app\index\model;
 
 use think\Model;
 
-class Account extends Model
+class Users extends Model
 {
 
 }
