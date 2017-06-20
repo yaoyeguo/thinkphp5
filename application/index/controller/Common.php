@@ -23,6 +23,7 @@ class Common extends Controller
         $tree = $this->getTreeData('level');
 //        echo '<pre>';print_r($tree);exit();
         $this->assign('tree',$tree);
+        $this->assign('userInfo',Session::get('userInfo'));
     }
 
     public function checkLogin(){
